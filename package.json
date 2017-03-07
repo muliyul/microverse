@@ -1,0 +1,27 @@
+{
+  "name": "microverse",
+  "version": "1.0.0",
+  "description": "A library for quickly prototyping genetic algorithms for nodejs",
+  "main": "lib/index.js",
+  "repository": "https://github.com/muliyul/microverse.git",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "genetic",
+    "algorithm",
+    "nodejs"
+  ],
+  "author": {
+    "name": "Muli Yulzary",
+    "email": "muliyul@gmail.com",
+    "url": "https://github.com/muliyul"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.1.5"
+  },
+  "devDependencies": {
+    "mocha": "^3.2.0"
+  }
+}
