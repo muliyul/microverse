@@ -1,5 +1,5 @@
-let {Chromosome, Algorithm, operators} = require('../lib');
-let {Crossovers, Selectors} = operators;
+let {Chromosome, Algorithm, Operators} = require('../lib');
+let {Crossovers, Selectors} = Operators;
 
 let population = [];
 let target = 'wubba lubba dub dub';

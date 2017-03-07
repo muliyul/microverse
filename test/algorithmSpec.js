@@ -1,6 +1,6 @@
 let assert = require('assert');
-let {Chromosome, Algorithm, operators} = require('../lib');
-let {Crossovers, Selectors} = operators;
+let {Chromosome, Algorithm, Operators} = require('../lib');
+let {Crossovers, Selectors} = Operators;
 
 describe('Algorithm', function () {
     it('Constructor should throw an error if missing required options', function () {
