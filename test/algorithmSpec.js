@@ -1,6 +1,8 @@
+Promise = require('bluebird');
 let assert = require('assert');
-let {Chromosome, Algorithm, Operators} = require('../lib');
+let {Chromosome, Algorithm, Operators} = require('../src');
 let {Crossovers, Selectors} = Operators;
+let exampleAlg = require('../example/string-optimizer.ga');
 
 describe('Algorithm', function () {
     it('Constructor should throw an error if missing required options', function () {
@@ -61,14 +63,30 @@ describe('Algorithm', function () {
     });
 
 
-    it('Should converge on the example', function (done) {
-        let alg = require('../example');
-        alg.on('error', done);
-        alg.on('end', info => {
+    it('Should converge on the example', function () {
+        return exampleAlg.run().then(info => {
             let solution = info.solution.getDNA().join('');
             assert.equal(solution, 'wubba lubba dub dub');
-            done()
         });
-        alg.run();
     });
+
+    it('Should generate generations with the generator api', function () {
+        let generation = exampleAlg.generator().next().value;
+        return generation.then(info => {
+            assert.notEqual(info);
+        });
+    });
+
+    it('Should preserve the best solution after each generation', function () {
+        let gen = exampleAlg.generator();
+        let generation1 = gen.next().value;
+        let generation2 = gen.next().value;
+
+        let x = [];
+        x._fitness = 0;
+
+        return Promise.all([generation1, generation2]).spread((info1, info2) => {
+            assert.equal(info2.population.contains(info1.parents), true);
+        })
+    })
 });

@@ -1,4 +1,4 @@
-let {Chromosome, Algorithm, Operators} = require('../lib');
+let {Chromosome, Algorithm, Operators} = require('../src');
 let {Crossovers, Selectors} = Operators;
 
 let population = [];
@@ -26,7 +26,6 @@ let alg = new Algorithm({
             let step = -3 + Math.floor(Math.random() * 6);
             dna[i] = String.fromCharCode(
                 Number(char.charCodeAt(0) + step)
-                    //.clamp('a'.charCodeAt(0), 'z'.charCodeAt(0))
             );
             return done(null, new Chromosome(dna));
         }

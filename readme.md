@@ -45,14 +45,15 @@ All algorithm methods are available with `this` keyword and because of that
 arrow functions are **NOT** supported since they cannot be bound.
 
 ##TODO
-* Stream / Generator support as population input.
+* Stream / Generator support as population input. √ 
 * Proper stream output (as objects?).
-* Add more crossover functions (Single Point, Double Point, Arithmetic).
+* Add more crossover functions (Single Point, Double Point, Arithmetic). √
 * Add more selector functions (Roulette Wheel, Rank, Steady-State).
 * Add genetic programming example.
+* Make it available to browsers.
 * Benchmarks.
 
 ##Development
 Install dependencies: `npm i`
 
-Run tests: `mocha`
+Run tests: `npm test`

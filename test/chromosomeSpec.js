@@ -1,6 +1,5 @@
 let assert = require('assert');
-let {Chromosome, Algorithm, Operators} = require('../lib');
-let {Crossovers, Selectors} = Operators;
+let {Chromosome} = require('../src');
 
 describe('Chromosome', function () {
     it('Should throw an error if the DNA is not an array', function () {
