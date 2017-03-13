@@ -1,46 +1,43 @@
-let {Chromosome, Algorithm, Operators} = require('../src');
+let {Algorithm, Operators} = require('../src');
 let {Crossovers, Selectors} = Operators;
 
-let population = [];
-let target = 'wubba lubba dub dub';
+module.exports = function (target) {
+    let population = [];
 
-for (let i = 0; i < 5; i++) {
-    let a = 'a'.charCodeAt(0);
-    let char = String.fromCodePoint(a + Math.floor(Math.random() * ('z'.charCodeAt(0) - a)));
-    let dna = [];
-    for (let j = 0; j < target.length; j++) {
-        dna.push(char);
+    for (let i = 0; i < 5; i++) {
+        let a = 'a'.charCodeAt(0);
+        let dna = [];
+        for (let j = 0; j < target.length; j++) {
+            let char = String.fromCodePoint(a + Math.floor(Math.random() * ('z'.charCodeAt(0) - a)));
+            dna.push(char);
+        }
+        population.push(dna);
     }
-    population.push(new Chromosome(dna));
-}
 
-let alg = new Algorithm({
-    population: population,
-    crossover: Crossovers.Uniform,
-    selector: Selectors.Elitism(2),
-    mutator: function (c, done) {
-        if (Math.random() < .1) {
-            let dna = c.getDNA();
+    return new Algorithm({
+        steadyState: true,
+        population: population,
+        crossover: Crossovers.Uniform,
+        selector: Selectors.Elitism(2),
+        mutator: function (dna, done) {
+            if (Math.random() >= .1)
+                return done();
             let i = Math.floor(Math.random() * dna.length);
             let char = dna[i];
             let step = -3 + Math.floor(Math.random() * 6);
             dna[i] = String.fromCharCode(
                 Number(char.charCodeAt(0) + step)
             );
-            return done(null, new Chromosome(dna));
+            return done(null, dna);
+        },
+        fitnessFn: function (dna, done) {
+            let fitness = dna.map((c, i) => {
+                return -Math.abs(target.charCodeAt(i) - c.charCodeAt(0))
+            }).reduce((p, c) => p + c, 0);
+            done(null, fitness);
+        },
+        stopCriteria: function (leader, population) {
+            return leader.join('') == target;
         }
-        done();
-    },
-    fitnessFn: function (c, done) {
-        let dna = c.getDNA();
-        let fitness = dna.map((c, i) => {
-            return -Math.abs(target.charCodeAt(i) - c.charCodeAt(0))
-        }).reduce((p, c) => p + c, 0);
-        done(null, fitness);
-    },
-    stopCriteria: function (leader, population) {
-        return leader.getDNA().join('') == target;
-    }
-});
-
-module.exports = alg;
+    });
+};
