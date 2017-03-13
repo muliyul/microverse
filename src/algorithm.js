@@ -1,7 +1,6 @@
 let stream = require('stream');
 let util = require('util');
 let async = require('async');
-let serialize = require('serialize-javascript');
 Promise = require('bluebird');
 Promise.promisifyAll(async, {suffix: 'Promise'});
 
