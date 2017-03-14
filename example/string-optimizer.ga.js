@@ -4,7 +4,7 @@ let {Crossovers, Selectors} = Operators;
 module.exports = function (target) {
     let population = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 30; i++) {
         let a = 'a'.charCodeAt(0);
         let dna = [];
         for (let j = 0; j < target.length; j++) {
@@ -37,7 +37,7 @@ module.exports = function (target) {
             done(null, fitness);
         },
         stopCriteria: function (leader, population) {
-            return leader.join('') == target;
+            return leader.join('') === target;
         }
     });
 };

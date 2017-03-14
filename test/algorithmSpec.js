@@ -20,7 +20,7 @@ describe('Algorithm', function () {
 
         expect(() => {
             new Algorithm({
-                population: [new Chromosome([1, 2, 3])],
+                population: [[1, 2, 3]],
                 selector: Selectors.Elitism(2),
                 mutator: function (c, done) {
                 },
@@ -31,7 +31,7 @@ describe('Algorithm', function () {
 
         expect(() => {
             new Algorithm({
-                population: [new Chromosome([1, 2, 3])],
+                population: [[1, 2, 3]],
                 crossover: Crossovers.Uniform,
                 selector: Selectors.Elitism(2),
                 mutator: function (c, done) {
@@ -43,7 +43,7 @@ describe('Algorithm', function () {
 
         expect(() => {
             new Algorithm({
-                population: [new Chromosome([1, 2, 3])],
+                population: [[1, 2, 3]],
                 crossover: Crossovers.Uniform,
                 selector: Selectors.Elitism(2),
                 fitnessFn: function (c) {
@@ -53,7 +53,7 @@ describe('Algorithm', function () {
 
         expect(() => {
             new Algorithm({
-                population: [new Chromosome([1, 2, 3])],
+                population: [[1, 2, 3]],
                 crossover: Crossovers.Uniform,
                 selector: Selectors.Elitism(2),
                 mutator: function (c, done) {
@@ -80,26 +80,18 @@ describe('Algorithm', function () {
     it('Should emit evaluation, selection, crossover, generation events', function () {
         let alg = StringOptimizer('wubba lubba dub dub');
         let gen = alg.generator();
-        let promises = [];
+        let defers = [];
         for (let i = 0; i < 4; i++)
-            promises.push(Promise.defer());
-        alg.once('evaluation', info => {
-            expect(info).to.exist;
-            promises[0].resolve();
-        });
-        alg.once('selection', info => {
-            expect(info).to.exist;
-            promises[1].resolve();
-        });
-        alg.once('crossover', info => {
-            expect(info).to.exist;
-            promises[2].resolve();
-        });
-        alg.once('generation', info => {
-            expect(info).to.exist;
-            promises[3].resolve();
-        });
+            defers.push(Promise.defer());
+        alg.once('evaluation', info=>defers[0].resolve(info));
+        alg.once('selection', info=>defers[1].resolve(info));
+        alg.once('crossover', info=>defers[2].resolve(info));
+        alg.once('generation', info=>defers[3].resolve(info));
         gen.next();
-        return Promise.all(promises.map(p => p.promise));
+        return Promise.all(defers.map(p => p.promise)).then(results => {
+            for (let i = 0; i < results.length; i++) {
+                expect(results[i]).to.exist
+            }
+        });
     })
 });
