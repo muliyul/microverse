@@ -71,7 +71,7 @@ microverse is a tiny library for quickly prototyping genetic algorithms. current
     let uxo = Uniform;
 ```
 
-Read more about [crossovers](http://www.obitko.com/tutorials/genetic-algorithms/crossover-mutation.php) and [selectors](http://www.obitko.com/tutorials/genetic-algorithms/selection.php). 
+Note: Read more about [crossovers](http://www.obitko.com/tutorials/genetic-algorithms/crossover-mutation.php) and [selectors](http://www.obitko.com/tutorials/genetic-algorithms/selection.php). 
 
 ##TODO
 - [x] Stream / Generator support as population output. 
