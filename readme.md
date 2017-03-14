@@ -67,7 +67,7 @@ microverse is a tiny library for quickly prototyping genetic algorithms. current
     let rws = Roulette(2);
     
     //Returns a crossover function that spreads
-    //parents traits evenly across a new 
+    //parents traits evenly across a new offspring
     let uxo = Uniform;
 ```
 Note: unless specified manually, all
@@ -75,13 +75,13 @@ Note: unless specified manually, all
 Read more about [crossovers](http://www.obitko.com/tutorials/genetic-algorithms/crossover-mutation.php) and [selectors](http://www.obitko.com/tutorials/genetic-algorithms/selection.php). 
 
 ##TODO
--[x] Stream / Generator support as population output. 
--[x] Add more crossover functions (Single Point, Double Point, Arithmetic).
--[x] Add more selector functions (Roulette Wheel, Rank, Steady-State).
--[ ] Proper object stream output.
--[ ] Add genetic programming example.
--[ ] Make it available to browsers.
--[ ] Benchmarks.
+- [x] Stream / Generator support as population output. 
+- [x] Add more crossover functions (Single Point, Double Point, Arithmetic).
+- [x] Add more selector functions (Roulette Wheel, Rank, Steady-State).
+- [ ] Proper object stream output.
+- [ ] Add genetic programming example.
+- [ ] Make it available to browsers.
+- [ ] Benchmarks.
 
 ##Development
 Install dependencies: `npm i`
