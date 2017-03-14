@@ -47,7 +47,7 @@ microverse is a tiny library for quickly prototyping genetic algorithms. current
 ```
 
 #####Options:
-* lazyEval: `Boolean` (optional, default: `true`) - will evaluate each solution only once.
+* lazyEval: `Boolean` (optional, default: `false`) - will evaluate each solution only once.
 * population: `Array` (required) - an array of chromosomes.
 * crossover: `function (parents, done)` (required) - errback accepts the offspring created.
 * selector: `function (population, done)` (required) - errback accepts the selected parents from the population created.
@@ -70,7 +70,6 @@ microverse is a tiny library for quickly prototyping genetic algorithms. current
     //parents traits evenly across a new offspring
     let uxo = Uniform;
 ```
-Note: unless specified manually, all
 
 Read more about [crossovers](http://www.obitko.com/tutorials/genetic-algorithms/crossover-mutation.php) and [selectors](http://www.obitko.com/tutorials/genetic-algorithms/selection.php). 
 
