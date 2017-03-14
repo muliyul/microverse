@@ -1,5 +1,6 @@
+<img src="https://travis-ci.org/muliyul/microverse.svg?branch=master">
 <p align="center">
-  <img src="logo.png"/>
+  <img src="logo.png" width="85" height="85"/>
 </p>
 
 #microverse
