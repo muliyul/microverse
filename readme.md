@@ -3,16 +3,16 @@
   <img src="logo.png" width="85" height="85"/>
 </p>
 
-#microverse
+# microverse
 microverse is a tiny library for quickly prototyping genetic algorithms. currently only compatible with node.
 
-####Install
+#### Install
 `npm i -S microverse`
 
-#####Breaking Changes (v1.1.0):
+##### Breaking Changes (v1.1.0):
 * Chromosomes are now instances of `Array`.
 
-#####Usage (TL;DR):
+##### Usage (TL;DR):
 
 ```javascript
     let {Algorithm, Operators} = require('microverse');
@@ -46,7 +46,7 @@ microverse is a tiny library for quickly prototyping genetic algorithms. current
     alg.pipe(process.stdout); 
 ```
 
-#####Options:
+##### Options:
 * lazyEval: `Boolean` (optional, default: `false`) - will evaluate each solution only once.
 * population: `Array` (required) - an array of chromosomes.
 * crossover: `function (parents, done)` (required) - errback accepts the offspring created.
@@ -56,7 +56,7 @@ microverse is a tiny library for quickly prototyping genetic algorithms. current
 * stopCriteria: `function (leader, population)` (optional, default: `(leader, population) => false`) - A synchronous stop criteria to evaluate for each generation (truthy or falsely).
 * steadyState: (optional, default: `false`) - will determine if the algorithm should use the [steady-state](http://www.obitko.com/tutorials/genetic-algorithms/crossover-mutation.php) concept.
 
-####Factories:
+#### Factories:
 ```javascript
     let {Crossovers, Selectors} = require('microverse').Operators;
     let {SinglePoint, DoublePoint, Uniform, Arithmetic} = Crossovers;
@@ -73,7 +73,7 @@ microverse is a tiny library for quickly prototyping genetic algorithms. current
 
 Note: Read more about [crossovers](http://www.obitko.com/tutorials/genetic-algorithms/crossover-mutation.php) and [selectors](http://www.obitko.com/tutorials/genetic-algorithms/selection.php). 
 
-##TODO
+## TODO
 - [x] Stream / Generator support as population output. 
 - [x] Add more crossover functions (Single Point, Double Point, Arithmetic).
 - [x] Add more selector functions (Roulette Wheel, Rank, Steady-State).
@@ -82,7 +82,7 @@ Note: Read more about [crossovers](http://www.obitko.com/tutorials/genetic-algor
 - [ ] Make it available to browsers.
 - [ ] Benchmarks.
 
-##Development
+## Development
 Install dependencies: `npm i`
 
 Run tests: `npm test`
