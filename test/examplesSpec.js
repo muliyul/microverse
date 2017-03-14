@@ -11,9 +11,9 @@ describe('Examples', function () {
                 //Recording the first population's leader
                 firstLeader = info.leader;
             });
-            return alg.run(3000).then(info => {
-                expect(info.solution._fitness).to.be.at.least(firstLeader._fitness);
-                console.log(info.solution.join(''))
+            return alg.run(2500).then(info => {
+                expect(info.solution._fitness).to.be.at.above(firstLeader._fitness);
+                //console.log(info.solution.join(''))
             });
         });
     });
@@ -22,7 +22,8 @@ describe('Examples', function () {
         it('Should converge', function () {
             let firstLeader;
             let target = [];
-            for (let x = -1000; x < 1000; x++) {
+            let range = 20;
+            for (let x = 0; x < range; x++) {
                 target.push([x, Math.pow(x, 2) + 3])
             }
             let alg = FormulaFitter(target);
@@ -30,8 +31,8 @@ describe('Examples', function () {
                 //Recording the first population's leader
                 firstLeader = info.leader;
             });
-            return alg.run(20).then(info => {
-                expect(info.solution._fitness).to.be.at.least(firstLeader._fitness);
+            return alg.run(2000).then(info => {
+                expect(info.solution._fitness).to.be.at.above(firstLeader._fitness);
                 let str = info.solution.map((c, i) => {
                     if (c) {
                         if (c !== 1)
@@ -51,7 +52,8 @@ describe('Examples', function () {
                     else {
                         return '';
                     }
-                }).filter(s => s).reverse().join(' + ');
+                })
+                    .filter(s => s).reverse().join(' + ');
                 console.log(str);
             });
         });

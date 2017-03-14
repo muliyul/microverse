@@ -54,7 +54,7 @@ module.exports = function (target) {
             done(null, -rms);
         },
         stopCriteria: function (leader, population) {
-            return Math.abs(leader._fitness) <= .005;
+            return Math.abs(leader._fitness) <= .05;
         }
     });
 
