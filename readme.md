@@ -52,7 +52,7 @@ microverse is a tiny library for quickly prototyping genetic algorithms. current
 * crossover: `function (parents, done)` (required) - errback accepts the offspring created.
 * selector: `function (population, done)` (required) - errback accepts the selected parents from the population created.
 * mutator: `function (chromosome, done)` (optional, default: `(chromosome, done) => done()`). errback accepts the mutated chromosome (falsely for unchanged).
-* fitnessFn: `function (chromosome, done)` (required) - errback accepts the fitness value for this chromosome.
+* fitnessFn: `function (chromosome, done)` (required) - errback accepts the fitness value for this chromosome. Lowest fitness `-Infinity`, highest fitness `Infinity`. To reverse this effect (in case of Error measurements like RMS) just prepend the negative sign `done(null, -fitness)`
 * stopCriteria: `function (leader, population)` (optional, default: `(leader, population) => false`) - A synchronous stop criteria to evaluate for each generation (truthy or falsely).
 * steadyState: (optional, default: `false`) - will determine if the algorithm should use the [steady-state](http://www.obitko.com/tutorials/genetic-algorithms/crossover-mutation.php) concept.
 
