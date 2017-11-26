@@ -2,7 +2,7 @@
   "name": "microverse",
   "version": "1.1.0",
   "description": "A library for quickly prototyping genetic algorithms for nodejs",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "repository": "https://github.com/muliyul/microverse.git",
   "scripts": {
     "test": "mocha"
